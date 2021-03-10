@@ -17,13 +17,19 @@ body {
 /* Navigation Bar */
 .nav-bar {
 	height: 10%;
-	background-color: grey;
+	background-color: rgba(0, 156, 158, 1);
 	position: fixed;
 	width: 100%;
 	top: 0;
+	opacity: .95;
 }
 .wrapper {
 	height: 10%;
+}
+.nav-bar h1 {
+	float: left;
+	margin-left: 2%;
+	color: white;
 }
 .nav-bar ul {
   list-style:none;
@@ -44,22 +50,55 @@ body {
   text-decoration: underline;
 }
 
+.title {
+	margin-left: 5%;
+	color: black;
+}
 .header {
 	margin-left: 5%;
+	color: rgba(0, 156, 158, 1);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 20px;
+}
+
+.grid-child p {
+	margin-left: 10px;
+}
+.grid-child div {
+	overflow: hidden;
+}
+.grid-child div:hover {
+	overflow: auto;
 }
 
 .priority {
-	overflow: auto;
 	border: solid;
 	height: 200px;
-	width: 65%;
+	width: 85%;
 	margin-left: 5%;
 }
 
 .main-feed {
-	overflow: auto;
 	border: solid;
 	height: 400px;
-	width: 65%;
+	width: 85%;
 	margin-left: 5%;
+}
+
+.partner-list {
+	border: solid;
+	height: 200px;
+	/*width: 30%;*/
+	margin-right: 5%;
+}
+
+.your-class {
+	border: solid;
+	height: 200px;
+	/*width: 30%;*/
+	margin-right: 5%;
 }
