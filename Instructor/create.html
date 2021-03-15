@@ -33,12 +33,44 @@
 
   	<form action="action_page.php">
       <div class="container">
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
+        <!-- <h1>Register</h1> -->
+        <p>Please fill in this form to create a classroom.</p>
         <hr>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <label for="class_name"><b>Classroom Name</b></label>
+        <input type="text" placeholder="Enter Class Name" name="class_name" id="class_name" required>
+
+        <label for="description"><b>Short Classroom Description</b></label>
+        <textarea rows = "5"  name = "description" placeholder="Enter Class Details (Max 500 Char)." maxlength="500" required></textarea><br>
+
+        <label for="subjects"><b>Subjects </b></label>
+        <p>(Select all that apply)</p>
+        <div class="checklist">
+          <input type="checkbox" id="subj1" name="subj1" value="Environmental">
+          <label for="subj1"> Environmental Sustainability </label><br>
+          <input type="checkbox" id="subj2" name="subj2" value="Math">
+          <label for="subj2"> Mathematics </label><br>
+          <input type="checkbox" id="subj3" name="subj3" value="Biology">
+          <label for="subj3"> Biology </label><br>
+          <input type="checkbox" id="subj4" name="subj4" value="Chemistry">
+          <label for="subj4"> Chemistry </label><br>
+          <input type="checkbox" id="subj5" name="subj5" value="Physics">
+          <label for="subj5"> Physics </label><br>
+          <input type="checkbox" id="subj6" name="subj6" value="Meche">
+          <label for="subj6"> Mechanical Engineering </label><br>
+          <input type="checkbox" id="subj7" name="subj7" value="CS">
+          <label for="subj7"> Computer Science </label><br>
+        </div>
+
+        <label for="syllabus"><b>Syllabus</b></label>
+        <p> Either upload a syllabus or type it in below.</p>
+        <input type="file" id="syllabus" name="syllabus"><p></p>
+        <textarea rows = "5" name="syllabus" placeholder="Enter syllabus here (Max 1000 Char)." maxlength="1000"></textarea>
+
+        <label for="students"><b> Add Students to Your Class</b></label>
+        <p> Either upload a list of emails or manually enter them below.</p>
+        <input type="file" id="emailfile" name="emailfile"><p></p>
+        <textarea rows = "3" id="students" name="students" placeholder="Valid student emails, seperated by commas."></textarea>
 
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="psw" required>

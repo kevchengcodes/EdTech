@@ -16,7 +16,7 @@ body {
 
 /* Navigation Bar */
 .nav-bar {
-	height: 10%;
+	height: 55px;
 	background-color: rgba(0, 156, 158, 1);
 	position: fixed;
 	width: 100%;
@@ -24,7 +24,7 @@ body {
 	opacity: .95;
 }
 .wrapper {
-	height: 10%;
+	height: 55px;
 }
 .nav-bar h1 {
 	float: left;
@@ -171,7 +171,7 @@ body {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=number], input[type=file], textarea, .checklist {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -180,7 +180,12 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+.checklist {
+	height: 150px;
+	overflow: auto;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
   background-color: #ddd;
   outline: none;
 }
