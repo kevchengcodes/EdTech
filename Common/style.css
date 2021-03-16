@@ -89,6 +89,18 @@ body {
 	margin-left: 5%;
 }
 
+.forum {
+	border: solid;
+	height: 600px;
+	width: 95%;
+	margin-left: 5%;
+}
+
+.filters {
+	height: 600px;
+	margin-right: 5%;
+}
+
 .partner-list {
 	border: solid;
 	height: 200px;
@@ -120,6 +132,12 @@ body {
 .schedule {
 	border: solid;
 	height: 200px;
+	margin-right: 5%;
+}
+
+.long-schedule {
+	border: solid;
+	height: 475px;
 	margin-right: 5%;
 }
 
