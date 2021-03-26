@@ -1,0 +1,109 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <!-- Jquery scripts -->
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src='../Common/app.js'></script>
+
+  <head>
+  	<meta charset="ut 8">
+   {% load static %}
+   <link rel='stylesheet' type="text/css" href="{% static 'scrapenews/style.css' %}">
+   <title>Student Landing Page</title>
+ </head>
+
+ <body>
+
+   <div class = "wrapper">
+    <div class = "nav-bar">
+     <h1 class="header"> EdTech </h1>
+     <ul>
+      <p></p>
+      <li><a href="#connect">Messages</a></li>
+      <li><a href="#blog">Settings</a></li>
+      <li><a href="#projects">Profile</a></li>
+      <li><a href="#about-me">Home</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Header -->
+<div class ="title">
+  <h1> Welcome, name. </h1>
+</div>
+
+<!-- Grid -->
+<div class="grid-container">
+
+  <!-- Priority Feed -->
+  <div class="grid-child">
+   <h2 class="header"> Priority Feed </h2>
+   <div class="priority">
+    <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+  </div>
+</div>
+
+<!-- Partner List -->
+<div class="grid-child">
+ <h2 class="header"> Partner List </h2>
+ <div class="partner-list">
+  <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+</div>
+</div>
+
+<!-- Main Feed -->
+<div class="grid-child">
+ <h2 class="header"> Main Feed </h2>
+
+ <div class="main-feed">
+  {% if latest_news_list %}
+  <ul>
+    {% for article in latest_news_list %}
+    <div class="grid-container">
+      <div class="grid-child">
+        <div class="news-article">
+          <h3>{{ article.Title }}</h3>
+          <p><strong>{{article.Date}}</strong></p>
+          <p>{{article.Summary}}</p>
+        </div>
+      </div>
+      <div class="grid-child">
+        <img src="{{article.Image}}" height="100px">
+      </div>
+    </div>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No articles are available.</p>
+  {% endif %}
+</div>
+</div>
+
+<!-- Class and Schedule -->
+<div class="grid-child">
+ <h2 class="header"> Your Class </h2>
+
+ <div class="your-class">
+  <p>Kevin</p>
+</div>
+<h2 class="header"> Upcoming </h2>
+<div class = "schedule">
+  <p>do this</p>
+</div>
+</div>
+
+<!-- Add a post -->
+<div class = "grid-child">
+ <h2 class="header"> Add a Post </h2>
+
+ <div class = "add-post">
+  <p>hello world</p>
+</div>
+</div>
+</div>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,247 @@
+html {
+	font-family: "Roboto", sans-serif;
+	scroll-behavior: smooth;
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	left: 0;
+	margin: 0;
+	overflow: scroll;
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+/* Navigation Bar */
+.nav-bar {
+	height: 55px;
+	background-color: rgba(0, 156, 158, 1);
+	position: fixed;
+	width: 100%;
+	top: 0;
+	opacity: .95;
+}
+.wrapper {
+	height: 55px;
+}
+.nav-bar h1 {
+	float: left;
+	margin-left: 2%;
+	color: white;
+}
+.nav-bar ul {
+  list-style:none;
+}
+.nav-bar ul li {
+  float: right; margin-top: 0px;
+  padding: 12px;
+  border-right: 1px solid white;
+}
+.nav-bar ul li:first-child{
+  padding-left: 0;
+}
+.nav-bar ul li a {
+  text-decoration: none;
+  color: white;
+}
+.nav-bar ul li a:hover {
+  text-decoration: underline;
+}
+
+.title {
+	margin-left: 5%;
+	color: black;
+}
+.header {
+	margin-left: 5%;
+	color: rgba(0, 156, 158, 1);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 20px;
+}
+
+.grid-child p {
+	margin-left: 10px;
+}
+.grid-child div {
+	overflow: hidden;
+}
+.grid-child div:hover {
+	overflow: auto;
+}
+
+.news-article {
+	overflow: auto;
+	height: 200px;
+}
+
+.priority {
+	border: solid;
+	height: 200px;
+	width: 85%;
+	margin-left: 5%;
+}
+
+.main-feed {
+	border: solid;
+	height: 475px;
+	width: 85%;
+	margin-left: 5%;
+}
+
+.forum {
+	border: solid;
+	height: 600px;
+	width: 95%;
+	margin-left: 5%;
+}
+
+.filters {
+	height: 600px;
+	margin-right: 5%;
+}
+
+.partner-list {
+	border: solid;
+	height: 200px;
+	/*width: 30%;*/
+	margin-right: 5%;
+}
+
+.your-class {
+	border: solid;
+	height: 200px;
+	/*width: 30%;*/
+	margin-right: 5%;
+}
+
+.ongoing-projects {
+	border: solid;
+	height: 600px;
+	width: 85%;
+	margin-left: 5%;
+}
+
+.other-projects {
+	border: solid;
+	height: 300px;
+	width: 85%;
+	margin-left: 5%;
+}
+
+.schedule {
+	border: solid;
+	height: 200px;
+	margin-right: 5%;
+}
+
+.long-schedule {
+	border: solid;
+	height: 475px;
+	margin-right: 5%;
+}
+
+.add-post {
+	border: solid;
+	height: 200px;
+	width: 85%;
+	margin-left: 5%;
+}
+
+.to-do {
+	overflow: hidden;
+	border:solid;
+	height: 400px;
+	width: 85%;
+	margin-left: 5%;
+}
+
+.to-do:hover {
+	overflow: auto;
+}
+
+.settings {
+	margin-left: 5%;
+	width: 85%;
+}
+
+.instructor-partner {
+	margin-left: 5%;
+	width: 85%;
+}
+
+#outerdiv {
+	margin-top: 15px;
+}
+
+.spacer {
+	margin-top: 50px;
+}
+
+/* Form
+ * Source: https://www.w3schools.com/howto/howto_css_register_form.asp 
+ */
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number], input[type=file], textarea, .checklist {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.checklist {
+	height: 150px;
+	overflow: auto;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
