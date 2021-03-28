@@ -1,0 +1,138 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <!-- Jquery scripts -->
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  
+  <head>
+    <meta charset="ut 8">
+    {% load static %}
+    <link rel='stylesheet' type="text/css" href="{% static 'scrapenews/style.css' %}">
+    <title>Create a Project</title>
+  </head>
+  
+  <body>
+    
+    <div class = "wrapper">
+      <div class = "nav-bar">
+        <h1 class="header"> EdTech </h1>
+        <ul>
+          <p></p>
+          <li><a href="#connect">Messages</a></li>
+          <li><a href="#blog">Settings</a></li>
+          <li><a href="#projects">Profile</a></li>
+          <li><a href="#about-me">Home</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Header -->
+    <div class ="title">
+      <h1> Create Your Project. </h1>
+    </div>
+    
+    <form action="create_new_project/" method="POST">
+      {% csrf_token %}
+      <div class="container">
+        <!-- <h1>Register</h1> -->
+        <p>Please fill in this form to create a project.</p>
+        <hr>
+        
+        <label for="Title"><b>Project Name</b></label>
+        <input type="text" placeholder="Enter Project Name" name="Title" id="Title" required>
+        
+        <label for="Short"><b>Short Project Description</b></label>
+        <textarea rows = "3"  name = "Short" id="Short" placeholder="Brief Summary of Project (Max 250 Char)." maxlength="250" required></textarea><br>
+        
+        <label for="Long"><b>Full Project Description</b></label>
+        <textarea rows = "8"  name = "Long" id="Long" placeholder="Full Details of Project..." required></textarea><br>
+        
+        <label for="Subjects"><b>Subjects </b></label>
+        <p>(Select all that apply)</p>
+        <div class="checklist">
+          <input type="checkbox" id="Subjects" name="Subjects" value="ES">
+          <label for="Subjects"> Environmental Sustainability </label><br>
+          <input type="checkbox" id="Subjects" name="Subjects" value="MA">
+          <label for="Subjects"> Mathematics </label><br>
+          <input type="checkbox" id="Subjects" name="Subjects" value="B">
+          <label for="Subjects"> Biology </label><br>
+          <input type="checkbox" id="Subjects" name="Subjects" value="C">
+          <label for="Subjects"> Chemistry </label><br>
+          <input type="checkbox" id="Subjects" name="Subjects" value="P">
+          <label for="Subjects"> Physics </label><br>
+          <input type="checkbox" id="Subjects" name="Subjects" value="ME">
+          <label for="Subjects"> Mechanical Engineering </label><br>
+          <input type="checkbox" id="Subjects" name="Subjects" value="CS">
+          <label for="Subjects"> Computer Science </label><br>
+        </div>
+        
+        <label for="Class_size"><b> Classroom Size Desired </b></label>
+        <div class = "checklist">
+          <input type="radio" id="Class_size" name="Class_size" value="tiny">
+          <label for="Class_size">1 - 10 Students</label><br>
+          <input type="radio" id="Class_size" name="Class_size" value="small">
+          <label for="Class_size">11 - 25 Students</label><br>
+          <input type="radio" id="Class_size" name="Class_size" value="med">
+          <label for="Class_size">26 - 40 Students</label><br>
+          <input type="radio" id="Class_size" name="Class_size" value="large">
+          <label for="Class_size">40 - 60 Students</label><br>
+          <input type="radio" id="Class_size" name="Class_size" value="any">
+          <label for="Class_size">No Size Preference</label><br>
+        </div>
+        
+        <label for="Group_size"><b> Individual Project Group Size Desired </b></label>
+        <div class = "checklist">
+          <input type="radio" id="Group_size" name="Group_size" value="tiny">
+          <label for="Group_size">1 Student</label><br>
+          <input type="radio" id="Group_size" name="Group_size" value="small">
+          <label for="Group_size">2 - 4 Students</label><br>
+          <input type="radio" id="Group_size" name="Group_size" value="med">
+          <label for="Group_size">5 - 8 Students</label><br>
+          <input type="radio" id="Group_size" name="Group_size" value="large">
+          <label for="Group_size">8 - 12 Students</label><br>
+          <input type="radio" id="Group_size" name="Group_size" value="any">
+          <label for="Group_size">No Size Preference</label><br>
+        </div>
+
+        <label for="Level"><b>Desired Student Level </b></label>
+        <p>(Select all that apply)</p>
+        <div class="checklist">
+          <input type="checkbox" id="Level" name="Level" value="E">
+          <label for="Level"> Elementary School </label><br>
+          <input type="checkbox" id="Level" name="Level" value="M">
+          <label for="Level"> Middle School </label><br>
+          <input type="checkbox" id="Level" name="Level" value="H">
+          <label for="Level"> High School </label><br>
+          <input type="checkbox" id="Level" name="Level" value="U">
+          <label for="Level"> Undergraduate </label><br>
+          <input type="checkbox" id="Level" name="Level" value="G">
+          <label for="Level"> Graduate </label><br>
+        </div>
+        
+        <label for="Hours_estimated"><b> Estimated Time Commitment </b></label>
+        <p> The number of hours each individual project group might take to complete the tasks. </p>
+        <input type="number" id="Hours_estimated" name="Hours_estimated" min="0" max="100" placeholder="Enter number of hours est." required><br>
+        
+        <label for="Locations"><b>Project Location(s) </b></label>
+        <p> Check the box below if virtual can be supported. </p>
+        <input type="checkbox" id="Virtual" name="Virtual" value="Virtual">
+        <label for="Virtual"> Virtual </label><br>
+        <input type="text" id="Locations" name="Locations" placeholder="Enter zip code(s), separated by commas.">
+        
+        <label for="Start_date"><b> Desired Dates </b> (Optional)</label><p></p>
+        <label for="Start_date">Start Date: </label>
+        <input type="date" id="Start_date" name="Start_date"> <br><br>
+        <label for="End_date"> End Date:</label>
+        <input type="date" id="End_date" name="End_date"> <br><br>
+      </div>
+
+      <input type="submit" value="Create">
+      
+    </form>
+    
+    
+  </body>
+  
+  
+  
+  </html>
