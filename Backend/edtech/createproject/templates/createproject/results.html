@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Jquery scripts -->
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<head>
+    <meta charset="ut 8">
+    {% load static %}
+    <link rel='stylesheet' type="text/css" href="{% static 'scrapenews/style.css' %}">
+    <title>Matching Forum</title>
+</head>
+
+<body>
+    
+    <div class = "wrapper">
+        <div class = "nav-bar">
+            <h1 class="header"> EdTech </h1>
+            <ul>
+                <p></p>
+                <li><a href="#connect">Messages</a></li>
+                <li><a href="#blog">Settings</a></li>
+                <li><a href="#projects">Profile</a></li>
+                <li><a href="#about-me">Home</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class ="title">
+        <h1> Find Your Projects. </h1>
+    </div>
+    
+    <!-- Grid -->
+    <div class="grid-container">
+        
+        <!-- Student Snapshot -->
+        <div class="grid-child">
+            <h2 class="header"> Available Opportunities </h2>
+            <div class="forum">
+                {% for proj in project_list %}
+                <h3>{{ proj.Title }}</h3>
+                <p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
+                <p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
+                {% if proj.Virtual == "Virtual" %}
+                <p> Virtual is supported. </p>
+                {% endif %}
+                <p>{{ proj.Short }}</p>
+                <li>Subject(s): {{proj.Subjects}}</li>
+                <li>Desired Level: {{ proj.Level }}</li>
+                <li>Desired Class Size: {{ proj.Class_size }}</li>
+                <li>Desired Group Size: {{ proj.Group_size }}</li>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Partner List -->
+        <div class="grid-child">
+            <h2 class="header"> Filters </h2>
+            <div class="filters">
+                <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="spacer"></div>
+    
+    <h2 class="header"> Ongoing Projects </h2>
+    
+    <div class="ongoing-projects">
+        <div id="outerdiv"></div>
+    </div>
+    
+    <div class="spacer"></div>
+    
+    
+</body>
+
+
+
+</html>

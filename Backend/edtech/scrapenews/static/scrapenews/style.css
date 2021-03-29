@@ -78,6 +78,8 @@ body {
 .news-article {
 	overflow: auto;
 	height: 200px;
+	padding-bottom: 30px
+	padding-top: 30px
 }
 
 .priority {
