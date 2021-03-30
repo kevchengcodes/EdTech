@@ -13,7 +13,7 @@ def index(request):
     return render(request, 'createproject/index.html', context)
 
 def results(request):
-    project_list = Projects.objects.order_by('-Start_date')
+    project_list = Projects.objects.order_by('Start_date')
     context = {'project_list': project_list}
     return render(request, 'createproject/results.html', context)
 
@@ -34,10 +34,8 @@ def results(request):
 def create_new_project(request):
     context = {}
     form = ProjectForm(request.POST or None)
-    print(form)
 
     if form.is_valid():
-        print(request.POST)
         form.save()
 
     context['form'] = form
