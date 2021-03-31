@@ -58,7 +58,49 @@
         <div class="grid-child">
             <h2 class="header"> Filters </h2>
             <div class="filters">
-                <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+                <form action="" method="GET">
+                    <label for="Subjects"><b>Subjects </b></label>
+                    <p>(Select all that apply)</p>
+                    <div class="checklist">
+                        <input type="checkbox" id="Subjects" name="Subjects" value="ES">
+                        <label for="Subjects"> Environmental Sustainability </label><br>
+                        <input type="checkbox" id="Subjects" name="Subjects" value="MA">
+                        <label for="Subjects"> Mathematics </label><br>
+                        <input type="checkbox" id="Subjects" name="Subjects" value="B">
+                        <label for="Subjects"> Biology </label><br>
+                        <input type="checkbox" id="Subjects" name="Subjects" value="C">
+                        <label for="Subjects"> Chemistry </label><br>
+                        <input type="checkbox" id="Subjects" name="Subjects" value="P">
+                        <label for="Subjects"> Physics </label><br>
+                        <input type="checkbox" id="Subjects" name="Subjects" value="ME">
+                        <label for="Subjects"> Mechanical Engineering </label><br>
+                        <input type="checkbox" id="Subjects" name="Subjects" value="CS">
+                        <label for="Subjects"> Computer Science </label><br>
+                    </div>
+                    
+                    <label for="Level"><b>Desired Student Level </b></label>
+                    <p>(Select all that apply)</p>
+                    <div class="checklist">
+                        <input type="checkbox" id="Level" name="Level" value="E">
+                        <label for="Level"> Elementary School </label><br>
+                        <input type="checkbox" id="Level" name="Level" value="M">
+                        <label for="Level"> Middle School </label><br>
+                        <input type="checkbox" id="Level" name="Level" value="H">
+                        <label for="Level"> High School </label><br>
+                        <input type="checkbox" id="Level" name="Level" value="U">
+                        <label for="Level"> Undergraduate </label><br>
+                        <input type="checkbox" id="Level" name="Level" value="G">
+                        <label for="Level"> Graduate </label><br>
+                    </div>
+                    
+                    <label for="Start_date"><b> Start Day Range </b></label><p></p>
+                    <label for="Start_date">As Early As: </label>
+                    <input type="date" id="Start_date_0" name="Start_date_0" value="2021-01-01"> <br><br>
+                    <label for="Start_date">As Late As: </label>
+                    <input type="date" id="Start_date_1" name="Start_date_1" value="2100-01-01"> <br><br>
+                    
+                    <input type="submit" value="Filter">
+                </form>
             </div>
         </div>
     </div>

@@ -114,16 +114,18 @@
         <input type="number" id="Hours_estimated" name="Hours_estimated" min="0" max="100" placeholder="Enter number of hours est." required><br>
         
         <label for="Locations"><b>Project Location(s) </b></label>
-        <p> Check the box below if virtual can be supported. </p>
-        <input type="checkbox" id="Virtual" name="Virtual" value="Virtual">
-        <label for="Virtual"> Virtual </label><br>
-        <input type="text" id="Locations" name="Locations" placeholder="Enter zip code(s), separated by commas.">
+        <p> Can virtual be supported? </p>
+        <input type="checkbox" id="Virtual" name="Virtual" value="Yes">
+        <label for="Virtual"> Yes virtual.</label>
+        <input type="checkbox" id="Virtual" name="Virtual" value="No">
+        <label for="Virtual"> No virtual. </label><br>
+        <input type="text" id="Locations" name="Locations" placeholder="Enter zip code(s), separated by commas." required>
         
         <label for="Start_date"><b> Desired Dates </b> (Optional)</label><p></p>
         <label for="Start_date">Start Date: </label>
-        <input type="date" id="Start_date" name="Start_date"> <br><br>
+        <input type="date" id="Start_date" name="Start_date" value="2021-01-01"> <br><br>
         <label for="End_date"> End Date:</label>
-        <input type="date" id="End_date" name="End_date"> <br><br>
+        <input type="date" id="End_date" name="End_date" value="2100-01-01"> <br><br>
       </div>
 
       <input type="submit" value="Create">
