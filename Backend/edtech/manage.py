@@ -2,7 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+import multiprocessing
+import time
+from model import scrape_the_news
 
 def main():
     """Run administrative tasks."""
@@ -18,5 +20,21 @@ def main():
     execute_from_command_line(sys.argv)
 
 
+def init_scrape():
+    print('do this once')
+
+def start_scrape():
+    while True:
+        scrape_the_news()
+        time.sleep(300)
+
+
+
 if __name__ == '__main__':
-    main()
+    #main()
+    #p = multiprocessing.Pool(2)
+    p1 = multiprocessing.Process(target=main, args=())
+    p2 = multiprocessing.Process(target=start_scrape, args=())
+
+    p1.start()
+    p2.start()
