@@ -6,24 +6,24 @@ from django.views import generic
 from django.utils import timezone
 
 # Create your views here.
-def create(request):
+def index(request):
 #     project_list = Projects.objects.order_by('-Start_date')
 #     context = {'project_list': project_list}
-    return render(request, 'createclass/create.html')
+    return render(request, 'createclass/index.html')
 
-def results(request):
+def home(request):
     #project_list = Projects.objects.order_by('-Start_date')
     #context = {'project_list': project_list}
-    return render(request, 'createproject/results.html')
+    return render(request, 'createclass/home.html')
 
 
 def create_new_class(request):
     context = {}
     form = CreateClassForm(request.POST or None)
 
+    print(form)
     if form.is_valid():
-        print(request.POST)
         form.save()
 
     context['form'] = form
-    return HttpResponseRedirect(reverse('createclass:results'))
+    return HttpResponseRedirect(reverse('createclass:home'))
