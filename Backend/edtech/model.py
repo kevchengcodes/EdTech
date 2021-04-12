@@ -60,18 +60,18 @@ def NLP_news():
     conn = psycopg2.connect("dbname=EdTech user=postgres password=edtech123")
     curr = conn.cursor()
 
-    select = 'SELECT * FROM public.scrapenews_articlesclicked ORDER BY "Date" DESC;'
+    select = 'SELECT "Title" FROM public.scrapenews_articlesclicked ORDER BY "Date" DESC;'
     curr.execute(select)
     rows = curr.fetchall()
 
     curr.close()
     conn.close()
 
-    column_names = {"id", "Title", "Summary", "Article", "Image", "Link", "Date"}
+    column_names = {"Title"}
     df = pd.DataFrame(rows, columns=column_names)
 
     # massage the data
-    df['tokenized'] = df['Summary'].apply(word_tokenize)
+    df['tokenized'] = df['Title'].apply(word_tokenize)
     df['lower'] = df['tokenized'].apply(lambda x: [word.lower() for word in x])
     exclude = ['``','"',"''","'"]
     df['noquotes'] = df['lower'].apply(lambda x: [word for word in x if not any(e in word for e in exclude)])
@@ -86,13 +86,13 @@ def NLP_news():
     df['lemma_str'] = [' '.join(map(str,l)) for l in df['lemmatized']]
 
     # NLP
-    tfidf_vectorizer = TfidfVectorizer(max_df=0.90, min_df =25, max_features=5000, use_idf=True)
+    tfidf_vectorizer = TfidfVectorizer(max_df=0.9, min_df =.01, max_features=5000, use_idf=True)
     tfidf = tfidf_vectorizer.fit_transform(df['lemma_str'])
     tfidf_feature_names = tfidf_vectorizer.get_feature_names()
     nmf = NMF(n_components=10, random_state=0, alpha=.1, init='nndsvd').fit(tfidf)
 
     # save topics
-    no_top_words = 10
+    no_top_words = 7
     topiclist = save_topics(nmf, tfidf_feature_names, no_top_words)
 
     return topiclist
@@ -102,47 +102,37 @@ def scrape_the_news():
     config = Config()
     config.browser_user_agent = user_agent
 
-    startdate = (date.today() - timedelta(days=1)).strftime("%m/%d/%Y")
-    enddate = date.today().strftime("%m/%d/%Y")
-    googlenews=GoogleNews(start=startdate,end=enddate)
-
     topiclist = NLP_news()
     print(topiclist[0])
-    googlenews.search(topiclist[1])
-    result=googlenews.result()
+
+    googlenews = GoogleNews()
+    googlenews.set_lang('en')
+    googlenews.set_encode('utf-8')
+    googlenews.set_period('7d')
+    googlenews.get_news(topiclist[0])
+
+    result=googlenews.results()
+    
+    googlenews.clear()
+    
     df=pd.DataFrame(result)
-    urls = df['link'].tolist()
-
-    # Initialize threads
-    pool = ThreadPool(10)
-
-    # open the urls in their own threads
-    # and return the results
-    results = pool.map(getTxt, urls)
-    #results.tolist()
-
-    # close the pool and wait for the work to finish 
-    pool.close() 
-    pool.join()
-
-    for i in range (0,len(results)):
-        if results[i]:
-            if not results[i]['Date']:
-                results[i]['Date'] = df['datetime'][i].to_pydatetime()
-            results[i]['Date'] = results[i]['Date'].strftime("%Y-%m-%d %H:%M:%S")
-
+    df = df.drop(['date','media'],axis=1)
+    df.columns=['Date','Summary','Image','Link','Site','Title']
+    df = df[['Title','Summary','Image','Link','Date','Site']]
 
     conn = psycopg2.connect("dbname=EdTech user=postgres password=edtech123")
     curr = conn.cursor()
-    #query = 'INSERT INTO public.scraper ("Title", "Summary", "Article", "Image", "Link", "Date") VALUES (%s %s %s %s %s)'
 
-    for row in results:
-        if row:
+    for i,row in df.iterrows():
+        try:
+            row.Link = 'https://' + row.Link
             columns = row.keys()
             values = [row[column] for column in columns]
 
             insert_statement = "INSERT INTO scrapenews_newslist VALUES (nextval('scrapenews_newslist_id_seq'::regclass),%s, %s, %s, %s, %s, %s)"
             curr.execute(insert_statement, tuple(values))
+        except:
+            print('could not add row', i)
 
     conn.commit()
 

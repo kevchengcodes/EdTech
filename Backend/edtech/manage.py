@@ -32,7 +32,6 @@ def start_scrape():
 
 if __name__ == '__main__':
     # main()
-    #p = multiprocessing.Pool(2)
     p1 = multiprocessing.Process(target=main, args=())
     p2 = multiprocessing.Process(target=start_scrape, args=())
 

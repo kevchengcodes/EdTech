@@ -7,20 +7,20 @@ class NewsList(models.Model):
         return self.Title
     Title = models.TextField()
     Summary = models.TextField()
-    Article = models.TextField()
     Image = models.TextField()
     Link = models.TextField()
     Date = models.TextField()
+    Site = models.TextField()
 
 class ArticlesClicked(models.Model):
     def __str__(self):
         return self.Title
     Title = models.TextField()
     Summary = models.TextField()
-    Article = models.TextField()
     Image = models.TextField()
     Link = models.TextField()
     Date = models.TextField()
+    Site = models.TextField()
 
 
 class ArticlesClickedForm(ModelForm):

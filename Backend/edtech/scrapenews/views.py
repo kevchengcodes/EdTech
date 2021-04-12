@@ -7,7 +7,9 @@ from datetime import datetime
 
 # Create your views here.
 def index(request):
-    latest_news_list = NewsList.objects.order_by('Link','-Date').distinct('Link')
+    for Link in NewsList.objects.values_list('Link', flat=True).distinct():
+        NewsList.objects.filter(pk__in=NewsList.objects.filter(Link=Link).values_list('id', flat=True)[1:]).delete()
+    latest_news_list = NewsList.objects.order_by('-Date')[0:30]
     context = {'latest_news_list': latest_news_list}
     return render(request, 'scrapenews/index.html', context)
 
@@ -15,7 +17,6 @@ def log_link(request):
     context = {}
     form = ArticlesClickedForm(request.POST or None)
     #form['DateClicked'] = datetime.today().strftime('%Y/%m/%d')
-    print(form)
 
     if form.is_valid():
         form.save()

@@ -67,10 +67,11 @@
                     {% csrf_token %}
                     <input type="hidden" name="Title" value="{{article.Title}}">
                     <input type="hidden" name="Summary" value="{{article.Summary}}">
-                    <input type="hidden" name="Article" value="{{article.Article}}">
                     <input type="hidden" name="Image" value="{{article.Image}}">
                     <input type="hidden" name="Link" value="{{article.Link}}">
                     <input type="hidden" name="Date" value="{{article.Date}}">
+                    <input type="hidden" name="Site" value="{{article.Site}}">
+                    <!-- <button type="submit" class="registerbtn"><h3><a href={{article.Link}} target="_blank">{{ article.Title }}</a></h3></button> -->
                     <h3><a href={{article.Link}} target="_blank">{{ article.Title }}</a></h3>
                     <p><strong>{{article.Date}}</strong></p>
                     <input type="submit" value="Add to Reading List">
