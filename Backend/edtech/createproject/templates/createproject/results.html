@@ -7,7 +7,7 @@
 <head>
     <meta charset="ut 8">
     {% load static %}
-    <link rel='stylesheet' type="text/css" href="{% static 'scrapenews/style.css' %}">
+    <link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
     <title>Matching Forum</title>
 </head>
 
@@ -50,6 +50,11 @@
                 <li>Desired Level: {{ proj.Level }}</li>
                 <li>Desired Class Size: {{ proj.Class_size }}</li>
                 <li>Desired Group Size: {{ proj.Group_size }}</li>
+                <form action="{% url 'createproject:addprojtoclass' proj.id %}" method="POST">
+                    {% csrf_token %}
+                    <!-- <input type="hidden" name="Title" value="{{proj.id}}"> -->
+                    <input type="submit" value="Add This Project">
+                  </form>
                 {% endfor %}
             </div>
         </div>

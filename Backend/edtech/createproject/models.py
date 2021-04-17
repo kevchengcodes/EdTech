@@ -21,6 +21,8 @@ class Projects(models.Model):
     Locations = models.CharField(max_length=255)
     Start_date = models.DateField(blank=True, null=True)
     End_date = models.DateField(blank=True, null=True)
+    Partner = models.CharField(max_length=255, default='GeorgiaTech')
+    ClassNum = models.IntegerField(default=0)
 
 class SubjectList(models.Model):
     def __str__(self):

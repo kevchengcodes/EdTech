@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Projects, SubjectList, StudentLevel, ProjectForm
-from .forms import CreateProjectForm
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
@@ -37,18 +36,14 @@ def results(request):
     context = {'project_list': project_list}
     return render(request, 'createproject/results.html', context)
 
-# class DetailView(generic.DetailView):
-#     model = Projects
-#     template_name = 'createproject/detail.html'
-    
-#     def get_queryset(self):
-#         project_list = Projects.objects.order_by('-Start_date')
-#         context = {'project_list': project_list}
-#         return Projects.objects.filter(pub_date__lte=timezone.now())
+def addprojtoclass(request, proj_id):
+    proj = get_object_or_404(Projects, pk=proj_id)
+    proj.ClassNum = 1
+    proj.save()
 
-# class ResultsView(generic.DetailView):
-#     model = Projects
-#     template_name = 'createproject/results.html'
+    return HttpResponseRedirect(reverse('createclass:home'))
+
+
 
 
 def create_new_project(request):
@@ -60,9 +55,3 @@ def create_new_project(request):
 
     context['form'] = form
     return HttpResponseRedirect(reverse('createproject:results'))
-
-def filter_projects(request):
-    context = {}
-    print(request.GET)
-
-    return render(request,"results.html")

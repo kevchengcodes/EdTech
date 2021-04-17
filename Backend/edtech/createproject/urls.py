@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('results/', views.results, name='results'),
     path('create_new_project/', views.create_new_project, name='create_new_project'),
-    path('', views.filter_projects, name='filter_projects'),
+    path('<int:proj_id>/addprojtoclass/', views.addprojtoclass, name='addprojtoclass'),
 ]

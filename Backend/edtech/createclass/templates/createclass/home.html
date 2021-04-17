@@ -64,16 +64,36 @@
     <h2 class="header"> Partner List </h2>
 
     <div class="instructor-partner">
-      <div id="outerdiv"></div>
+		{% for proj in project_list %}
+		<h3>{{ proj.Title }}</h3>
+		<p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
+		<p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
+		{% if proj.Virtual == "Virtual" %}
+		<p> Virtual is supported. </p>
+		{% endif %}
+		<p>{{ proj.Short }}</p>
+		<li>Subject(s): {{proj.Subjects}}</li>
+		<li>Desired Level: {{ proj.Level }}</li>
+		<li>Desired Class Size: {{ proj.Class_size }}</li>
+		<li>Desired Group Size: {{ proj.Group_size }}</li>
+		{% endfor %}
     </div>
 
     <div class="spacer"></div>
 
-    <h2 class="header"> Classroom Settings </h2>
+    <h2 class="header"> Make an Announcement </h2>
 
-    <div class = "settings">
-      <p>hello world</p>
-    </div>
+    <div class = "add-post">
+		<form action="{% url 'addpost:createpost' %}" method="POST">
+		  {% csrf_token %}
+		  <input type="hidden" name="Author" value="Mr. Cheng">
+		  <input type="hidden" name="Role" value="Instructor">
+		  <textarea rows = "5" name="Body" placeholder="Share something with your class!" maxlength="1000"></textarea>
+		  
+		  <button type="submit" class="registerbtn">Add Post</button>
+		  
+		</form>
+	  </div>
 
 
   </body>

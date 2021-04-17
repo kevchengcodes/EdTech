@@ -31,9 +31,9 @@ def start_scrape():
 
 
 if __name__ == '__main__':
-    # main()
-    p1 = multiprocessing.Process(target=main, args=())
-    p2 = multiprocessing.Process(target=start_scrape, args=())
+    main()
+    # p1 = multiprocessing.Process(target=main, args=())
+    # p2 = multiprocessing.Process(target=start_scrape, args=())
 
-    p1.start()
-    p2.start()
+    # p1.start()
+    # p2.start()

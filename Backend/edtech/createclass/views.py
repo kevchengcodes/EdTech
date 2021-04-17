@@ -4,6 +4,7 @@ from .models import Classrooms, CreateClassForm
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from createproject.models import Projects
 
 # Create your views here.
 def index(request):
@@ -12,9 +13,9 @@ def index(request):
     return render(request, 'createclass/index.html')
 
 def home(request):
-    #project_list = Projects.objects.order_by('-Start_date')
-    #context = {'project_list': project_list}
-    return render(request, 'createclass/home.html')
+    project_list = Projects.objects.filter(ClassNum = 1).order_by('-Start_date')
+    context = {'project_list': project_list}
+    return render(request, 'createclass/home.html', context)
 
 
 def create_new_class(request):

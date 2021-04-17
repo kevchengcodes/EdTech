@@ -9,7 +9,7 @@
     <meta charset="ut 8">
     {% load static %}
     <script src="{% static 'scrapenews/app.js' %}"></script> 
-    <link rel='stylesheet' type="text/css" href="{% static 'scrapenews/style.css' %}">
+    <link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
     <title>Student Landing Page</title>
   </head>
   
@@ -40,7 +40,31 @@
       <div class="grid-child">
         <h2 class="header"> Priority Feed </h2>
         <div class="priority">
-          <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+          {% if latest_posts %}
+          <ul>
+            {% for post in latest_posts %}
+            
+              {% if post.Role == "Instructor" %}
+              <div class="InstructorPost">
+                <h3> FROM THE TEACHER'S DESK : {{post.Author}} </h3>
+                <p> {{post.PostDate}} </p>
+                <p> {{post.Body}} </p>
+              </div>
+
+              {% else %}
+              <div>
+                <h3> {{post.Author}} </h3>
+                <p> {{post.PostDate}} </p>
+                <p> {{post.Body}} </p>
+              </div>
+              
+              {% endif %}
+              
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p>Your class hasn't been very active. Get the conversation started!</p>
+          {% endif %}
         </div>
       </div>
       
@@ -109,35 +133,23 @@
         <h2 class="header"> Add a Post </h2>
         
         <div class = "add-post">
-          <p>hello world</p>
+          <form action="{% url 'addpost:createpost' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="Author" value="Kevin">
+            <input type="hidden" name="Role" value="Student">
+            <textarea rows = "5" name="Body" placeholder="Share something with your class!" maxlength="1000"></textarea>
+            
+            <button type="submit" class="registerbtn">Add Post</button>
+            
+          </form>
         </div>
       </div>
     </div>
     
     
-    <!-- <script type="text/javascript">
-      function logclick() {
-        console.log('doing this');
-        var obj = {
-          table: []
-        };
-        obj.table.push({id: 1, square:2});
-        var json = JSON.stringify(obj);
-        fs.readFile('myjsonfile.json', 'utf8', function readFileCallback(err, data){
-          if (err){
-            console.log(err);
-          } else {
-            obj = JSON.parse(data); //now it an object
-            obj.table.push({id: 2, square:3}); //add some data
-            json = JSON.stringify(obj); //convert it back to json
-            fs.writeFile('myjsonfile.json', json, 'utf8', callback); // write it back 
-          }});
-          return false;
-        }
-      </script> -->
-      
-    </body>
     
-    
-    
-    </html>
+  </body>
+  
+  
+  
+  </html>
