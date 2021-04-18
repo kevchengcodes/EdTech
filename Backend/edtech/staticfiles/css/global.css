@@ -78,8 +78,8 @@ body {
 .news-article {
 	overflow: auto;
 	height: 200px;
-	padding-bottom: 30px
-	padding-top: 30px
+	padding-bottom: 30px;
+	padding-top: 30px;
 }
 
 .priority {
@@ -185,6 +185,13 @@ body {
 	margin-top: 50px;
 }
 
+.questionnaire {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
 /* Form
  * Source: https://www.w3schools.com/howto/howto_css_register_form.asp 
  */
@@ -254,11 +261,14 @@ a {
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-  }
+}
 
-  .InstructorPost h3 {
+
+.InstructorPost h3 {
 	color: rgba(0, 156, 158, 1);
-  }
-  .InstructorPost p {
+}
+
+.InstructorPost p {
 	  font-weight: bold;
-  }
+}
+

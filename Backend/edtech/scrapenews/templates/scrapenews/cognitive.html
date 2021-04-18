@@ -1,0 +1,166 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <!-- Jquery scripts -->
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  
+  
+  <head>
+    <meta charset="ut 8">
+    {% load static %}
+    <link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
+    <title>Student Cognitive Assessment</title>
+  </head>
+  
+  <body>
+    
+    <div class = "wrapper">
+      <div class = "nav-bar">
+        <h1 class="header"> EdTech </h1>
+        <ul>
+          <p></p>
+          <li><a href="#connect">Messages</a></li>
+          <li><a href="#blog">Settings</a></li>
+          <li><a href="#projects">Profile</a></li>
+          <li><a href="#about-me">Home</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Header -->
+    <div class ="title">
+      <h1> What kind of a learner are you? </h1>
+    </div>
+    
+    <!-- Grid -->
+    <div class ="questionnaire">
+      <p class="questionnaire">
+        Every student has their own learning style. The goal is this app is to adapt to each individual's preferences and make learning as fun and easy as possible! We'll start here by
+        filling out this questionnaire to determine some of your general learning and cognitive tendecies. The selected questions below are either curated from the 
+        <a href="https://www.webtools.ncsu.edu/learningstyles/" target="_blank"> Index of Learning Styles (ILS) Questionnaire </a> or specifically designed to assess whether your
+        cognitive style leans more towards field-dependent or field-independent. You can learn more from this <a href="https://www.jstor.org/stable/jeductechsoci.16.4.185 " target="_blank"> Journal of Educational Technology & Society</a>
+        article (Hwang et al., 2013).
+      </p>
+      <div class="spacer"><p></p></div>
+      
+      <form action="{% url 'scrapenews:cognitivehome' %}" method="GET">
+        <p>1. It's the end of a long day. Would you rather:</p>
+        <input type="radio" name="q1" id="fd" value="fd" required>
+        <label for="fd">Gather with a small group of friends.</label><br>
+        <input type="radio" name="q1" id="fi" value="fi">
+        <label for="fi">Stay home and relax.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>2. When I am learning something new, it helps me to</p>
+        <input type="radio" name="q2" id="fd" value="fd" required>
+        <label for="fd">talk about it.</label><br>
+        <input type="radio" name="q2" id="fi" value="fi">
+        <label for="fi">think about it.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>3. In classes I have taken</p>
+        <input type="radio" name="q3" id="fi" value="fi" required>
+        <label for="fi">  I have rarely gotten to know many of the students.</label><br>
+        <input type="radio" name="q3" id="fd" value="fd">
+        <label for="fd">  I have usually gotten to know many of the students.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>4. It is more important to me that an instructor</p>
+        <input type="radio" name="q4" id="fd" value="fd" required>
+        <label for="fd">  lay out the material in clear sequential steps.</label><br>
+        <input type="radio" name="q4" id="fi" value="fi">
+        <label for="fi">give me an overall picture and relate the material to other subjects.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>5. I learn</p>
+        <input type="radio" name="q5" id="fd" value="fd" required>
+        <label for="fd">  in fits and starts. I'll be totally confused and then suddenly it all "clicks."</label><br>
+        <input type="radio" name="q5" id="fi" value="fi">
+        <label for="fi"> at a fairly regular pace. If I study hard, I'll "get it."</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>6. I prefer to study </p>
+        <input type="radio" name="q6" id="fd" value="fd" required>
+        <label for="fd">in a study group.</label><br>
+        <input type="radio" name="q6" id="fi" value="fi">
+        <label for="fi">alone.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>7. I would rather first</p>
+        <input type="radio" name="q7" id="fi" value="fi" required>
+        <label for="fi">  try things out.</label><br>
+        <input type="radio" name="q7" id="fd" value="fd">
+        <label for="fd">  think about how I'm going to do it.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>8. When I have to perform a task, I prefer to</p>
+        <input type="radio" name="q8" id="fd" value="fd" required>
+        <label for="fd">master one way of doing it.</label><br>
+        <input type="radio" name="q8" id="fi" value="fi">
+        <label for="fi">come up with new ways of doing it.</label><br>
+        <div class="spacer"><p></p></div>
+        
+        <p>9. When writing a paper, I am more likely to</p>
+        <input type="radio" name="q9" id="fi" value="fi" required>
+        <label for="fi">  work on (think about or write) different parts of the paper and then order them.</label><br>
+        <input type="radio" name="q9" id="fd" value="fd">
+        <label for="fd">  work on (think about or write) the beginning of the paper and progress forward.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>10. When I have to work on a group project, I first want to</p>
+        <input type="radio" name="q10" id="fi" value="fi" required>
+        <label for="fi">   brainstorm individually and then come together as a group to compare ideas.</label><br>
+        <input type="radio" name="q10" id="fd" value="fd">
+        <label for="fd">  have "group brainstorming" where everyone contributes ideas.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>11. When I am learning a new subject, I prefer to</p>
+        <input type="radio" name="q11" id="fd" value="fd" required>
+        <label for="fd">stay focused on that subject, learning as much about it as I can.</label><br>
+        <input type="radio" name="q11" id="fi" value="fi">
+        <label for="fi">try to make connections between that subject and related subjects.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>12. I am more likely to be considered</p>
+        <input type="radio" name="q12" id="fi" value="fi" required>
+        <label for="fi">  reserved.</label><br>
+        <input type="radio" name="q12" id="fd" value="fd">
+        <label for="fd">  outgoing.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>13. I like teachers</p>
+        <input type="radio" name="q13" id="fd" value="fd" required>
+        <label for="fd">who spend a lot of time explaining.</label><br>
+        <input type="radio" name="q13" id="fi" value="fi">
+        <label for="fi">  who put a lot of diagrams on the board.</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>14. I am more motivated by:</p>
+        <input type="radio" name="q14" id="fi" value="fi" required>
+        <label for="fi">  Competing with yourself and others to optimize results</label><br>
+        <input type="radio" name="q14" id="fd" value="fd">
+        <label for="fd">  Cooperating with others toward a common goal</label><br>
+        <div class="spacer"><p></p></div>
+
+        <p>15. When working, I prefer to:</p>
+        <input type="radio" name="q15" id="fi" value="fi" required>
+        <label for="fi">  multi-task.</label><br>
+        <input type="radio" name="q15" id="fd" value="fd">
+        <label for="fd">  focus on one thing at a time.</label><br>
+        <div class="spacer"><p></p></div>
+
+        
+        
+        <button type="submit" class="registerbtn">Submit</button>
+        <div class="spacer"><p></p></div>
+        
+      </form>
+    </div>
+    
+    
+    
+  </body>
+  
+  
+  
+  </html>

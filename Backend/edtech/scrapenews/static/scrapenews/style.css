@@ -78,8 +78,8 @@ body {
 .news-article {
 	overflow: auto;
 	height: 200px;
-	padding-bottom: 30px
-	padding-top: 30px
+	padding-bottom: 30px;
+	padding-top: 30px;
 }
 
 .priority {
@@ -254,4 +254,10 @@ a {
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-  }
+}
+
+.questionnaire {
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+}
