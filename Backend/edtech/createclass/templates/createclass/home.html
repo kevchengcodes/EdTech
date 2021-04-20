@@ -1,71 +1,99 @@
   <!DOCTYPE html>
   <html lang="en">
-
+  
   <!-- Jquery scripts -->
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-
+  
   <head>
-  	<meta charset="ut 8">
-  	{% load static %}
-    <link rel='stylesheet' type="text/css" href="{% static 'scrapenews/style.css' %}">
-  	<title>Instructor Landing Page</title>
-  </head>
+	<meta charset="ut 8">
+	{% load static %}
+	<link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
+	<title>Instructor Landing Page</title>
+</head>
 
-  <body>
-
-  	<div class = "wrapper">
-  		<div class = "nav-bar">
-  			<h1 class="header"> EdTech </h1>
-  			<ul>
-  				<p></p>
-          <li><a href="#connect">Messages</a></li>
-          <li><a href="#blog">Settings</a></li>
-          <li><a href="#projects">Profile</a></li>
-          <li><a href="#about-me">Home</a></li>
-  			</ul>
-  		</div>
-  	</div>
-
-  	<!-- Header -->
-  	<div class ="title">
-  		<h1> Your Class, Your Rules. </h1>
-  	</div>
-
-  	<!-- Grid -->
-  	<div class="grid-container">
-
-  		<!-- Student Snapshot -->
-  		<div class="grid-child">
-  			<h2 class="header"> Student Snapshot </h2>
-  			<div class="main-feed">
-  				<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
-  			</div>
-  		</div>
-
-  		<!-- Partner List -->
-  		<div class="grid-child">
-  			<h2 class="header"> Placeholder </h2>
-  			<div class="partner-list">
-  				<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
-  			</div>
-  		</div>
-    </div>
-
-    <div class="spacer"></div>
-
-    <h2 class="header"> To-Do and For Your Review </h2>
-
-    <div class="to-do">
-      <div id="outerdiv"></div>
-    </div>
-
-    <div class="spacer"></div>
-
-    <h2 class="header"> Partner List </h2>
-
-    <div class="instructor-partner">
+<body>
+	
+	<div class = "wrapper">
+		<div class = "nav-bar">
+			<h1 class="header"> EdTech </h1>
+			<ul>
+				<p></p>
+				<li><a href="#connect">Messages</a></li>
+				<li><a href="#blog">Settings</a></li>
+				<li><a href="#projects">Profile</a></li>
+				<li><a href="#about-me">Home</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Header -->
+	<div class ="title">
+		<h1> Your Class, Your Rules. </h1>
+	</div>
+	
+	<!-- Grid -->
+	<div class="grid-container">
+		
+		<!-- Student Snapshot -->
+		<div class="grid-child">
+			<h2 class="header"> Student Snapshot </h2>
+			<div class="main-feed">
+				<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+			</div>
+		</div>
+		
+		<!-- Partner List -->
+		<div class="grid-child">
+			<h2 class="header"> Placeholder </h2>
+			<div class="partner-list">
+				<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="spacer"></div>
+	
+	<h2 class="header"> To-Do and For Your Review </h2>
+	
+	<div class="to-do">
+		{% if latest_posts %}
+		<ul>
+			{% for post in latest_posts %}
+			
+			{% if post.Role == "Instructor" %}
+			<div class="InstructorPost">
+				<h3> FROM THE TEACHER'S DESK : {{post.Author}} </h3>
+				<p> {{post.PostDate}} </p>
+				<p> {{post.Body}} </p>
+			</div>
+			
+			{% else %}
+			<div>
+				<h3> {{post.Author}} </h3>
+				<p> {{post.PostDate}} </p>
+				<p> {{post.Body}} </p>
+			</div>
+			
+			{% endif %}
+			<form action="{% url 'createclass:deletepost' post.id %}" method="POST">
+				{% csrf_token %}
+				<input type="submit" value="Delete Post">
+			</form>
+			
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>Your class hasn't been very active. Get the conversation started!</p>
+		{% endif %}
+	</div>
+	
+	<div class="spacer"></div>
+	
+	<h2 class="header"> Partner List </h2>
+	
+	<div class="instructor-partner">
 		{% for proj in project_list %}
-		<h3>{{ proj.Title }}</h3>
+		<h3>{{proj.Partner}}: {{ proj.Title }}</h3>
 		<p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
 		<p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
 		{% if proj.Virtual == "Virtual" %}
@@ -76,28 +104,33 @@
 		<li>Desired Level: {{ proj.Level }}</li>
 		<li>Desired Class Size: {{ proj.Class_size }}</li>
 		<li>Desired Group Size: {{ proj.Group_size }}</li>
-		{% endfor %}
-    </div>
 
-    <div class="spacer"></div>
-
-    <h2 class="header"> Make an Announcement </h2>
-
-    <div class = "add-post">
-		<form action="{% url 'addpost:createpost' %}" method="POST">
-		  {% csrf_token %}
-		  <input type="hidden" name="Author" value="Mr. Cheng">
-		  <input type="hidden" name="Role" value="Instructor">
-		  <textarea rows = "5" name="Body" placeholder="Share something with your class!" maxlength="1000"></textarea>
-		  
-		  <button type="submit" class="registerbtn">Add Post</button>
-		  
+		<form action="{% url 'createclass:removeproj' proj.id %}" method="POST">
+			{% csrf_token %}
+			<input type="submit" value="Remove Project">
 		</form>
-	  </div>
+		{% endfor %}
+	</div>
+	
+	<div class="spacer"></div>
+	
+	<h2 class="header"> Make an Announcement </h2>
+	
+	<div class = "add-post">
+		<form action="{% url 'addpost:createpost' %}" method="POST">
+			{% csrf_token %}
+			<input type="hidden" name="Author" value="Mr. Cheng">
+			<input type="hidden" name="Role" value="Instructor">
+			<textarea rows = "5" name="Body" placeholder="Share something with your class!" maxlength="1000"></textarea>
+			
+			<button type="submit" class="registerbtn">Add Post</button>
+			
+		</form>
+	</div>
+	
+	
+</body>
 
 
-  </body>
 
-
-
-  </html>
+</html>

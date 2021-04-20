@@ -34,7 +34,7 @@
     </div>
     
     <!-- Grid -->
-    <div class="grid-container">
+    <div class="container">
       
       <!-- Priority Feed -->
       <div class="grid-child">
@@ -43,23 +43,34 @@
           {% if latest_posts %}
           <ul>
             {% for post in latest_posts %}
-            
-              {% if post.Role == "Instructor" %}
-              <div class="InstructorPost">
-                <h3> FROM THE TEACHER'S DESK : {{post.Author}} </h3>
-                <p> {{post.PostDate}} </p>
-                <p> {{post.Body}} </p>
-              </div>
+            <div class="grid-container">
+              <div class = "grid-child">
 
-              {% else %}
-              <div>
-                <h3> {{post.Author}} </h3>
-                <p> {{post.PostDate}} </p>
-                <p> {{post.Body}} </p>
+                {% if post.Role == "Instructor" %}
+                <div class="InstructorPost">
+                  <h3> FROM THE TEACHER'S DESK : {{post.Author}} </h3>
+                  <p> {{post.PostDate}} </p>
+                  <p> {{post.Body}} </p>
+                </div>
+                
+                {% else %}
+                <div>
+                  <h3> {{post.Author}} </h3>
+                  <p> {{post.PostDate}} </p>
+                  <p> {{post.Body}} </p>
+                </div>
+                
+                {% endif %}
               </div>
-              
-              {% endif %}
-              
+              <div class="grid-child">
+                {% if post.Role == "Instructor" %}
+                  <img src= "{% static 'img/teacher.png' %}" height="50px">
+                {% else %}
+                <img src= "{% static 'img/student.jpg' %}" height="50px">
+                {% endif %}
+              </div>
+            </div>
+            <div class="spacer"><hr></div>
             {% endfor %}
           </ul>
           {% else %}
@@ -67,12 +78,21 @@
           {% endif %}
         </div>
       </div>
-      
-      <!-- Partner List -->
-      <div class="grid-child">
-        <h2 class="header"> Partner List </h2>
-        <div class="partner-list">
-          <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+
+      <!-- Add a post -->
+      <div class = "grid-child">
+        <h2 class="header"> Add a Post </h2>
+        
+        <div class = "add-post">
+          <form action="{% url 'addpost:createpost' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="Author" value="Kevin">
+            <input type="hidden" name="Role" value="Student">
+            <textarea rows = "5" name="Body" placeholder="Share something with your class!" maxlength="1000" required></textarea>
+            
+            <button type="submit" class="registerbtn">Add Post</button>
+            
+          </form>
         </div>
       </div>
       
@@ -87,26 +107,30 @@
             <div class="grid-container">
               <div class="grid-child">
                 <div class="news-article">
-                  <form action="{% url 'scrapenews:log_link' %}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="Title" value="{{article.Title}}">
-                    <input type="hidden" name="Summary" value="{{article.Summary}}">
-                    <input type="hidden" name="Image" value="{{article.Image}}">
-                    <input type="hidden" name="Link" value="{{article.Link}}">
-                    <input type="hidden" name="Date" value="{{article.Date}}">
-                    <input type="hidden" name="Site" value="{{article.Site}}">
-                    <!-- <button type="submit" class="registerbtn"><h3><a href={{article.Link}} target="_blank">{{ article.Title }}</a></h3></button> -->
-                    <h3><a href={{article.Link}} target="_blank">{{ article.Title }}</a></h3>
-                    <p><strong>{{article.Date}}</strong></p>
-                    <input type="submit" value="Add to Reading List">
-                  </form>
+                  <h3>{{ article.Site }}</h3>
+                  <h4><a href={{article.Link}} target="_blank">{{ article.Title }}</a></h4>
+                  <p><strong>{{article.Date}}</strong></p>
                   <p class="short_snippet">{{article.Summary}}</p>
                 </div>
               </div>
               <div class="grid-child">
-                <img src="{{article.Image}}" height="100px">
+                
+                <img src="{{article.Image}}" height="100px" onerror="this.onerror=null;this.src='{% static 'img/ecobulb.ico' %}';">
+
+                <form action="{% url 'scrapenews:log_link' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" name="Title" value="{{article.Title}}">
+                  <input type="hidden" name="Summary" value="{{article.Summary}}">
+                  <input type="hidden" name="Image" value="{{article.Image}}">
+                  <input type="hidden" name="Link" value="{{article.Link}}">
+                  <input type="hidden" name="Date" value="{{article.Date}}">
+                  <input type="hidden" name="Site" value="{{article.Site}}">
+                  <input type="submit" value="Add to Reading List">
+                </form>
+
               </div>
             </div>
+            <div class="spacer"><hr></div>
             {% endfor %}
           </ul>
           {% else %}
@@ -115,35 +139,7 @@
         </div>
       </div>
       
-      <!-- Class and Schedule -->
-      <div class="grid-child">
-        <h2 class="header"> Your Class </h2>
-        
-        <div class="your-class">
-          <p>Kevin</p>
-        </div>
-        <h2 class="header"> Upcoming </h2>
-        <div class = "schedule">
-          <p>do this</p>
-        </div>
-      </div>
       
-      <!-- Add a post -->
-      <div class = "grid-child">
-        <h2 class="header"> Add a Post </h2>
-        
-        <div class = "add-post">
-          <form action="{% url 'addpost:createpost' %}" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="Author" value="Kevin">
-            <input type="hidden" name="Role" value="Student">
-            <textarea rows = "5" name="Body" placeholder="Share something with your class!" maxlength="1000"></textarea>
-            
-            <button type="submit" class="registerbtn">Add Post</button>
-            
-          </form>
-        </div>
-      </div>
     </div>
     
     

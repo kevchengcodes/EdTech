@@ -49,8 +49,10 @@ def addprojtoclass(request, proj_id):
 def create_new_project(request):
     context = {}
     form = ProjectForm(request.POST or None)
+    print(form)
 
     if form.is_valid():
+        print(form)
         form.save()
 
     context['form'] = form

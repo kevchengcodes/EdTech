@@ -74,6 +74,21 @@ body {
 .grid-child div:hover {
 	overflow: auto;
 }
+.grid-child img, input {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+hr{
+    border:0;
+    margin:0;
+    width:90%;
+    height:2px;
+    background:black;
+}
 
 .news-article {
 	overflow: auto;
@@ -83,21 +98,24 @@ body {
 }
 
 .priority {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 200px;
 	width: 85%;
 	margin-left: 5%;
 }
 
 .main-feed {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 475px;
 	width: 85%;
 	margin-left: 5%;
 }
 
 .forum {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 600px;
 	width: 95%;
 	margin-left: 5%;
@@ -109,47 +127,54 @@ body {
 }
 
 .partner-list {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 200px;
 	/*width: 30%;*/
 	margin-right: 5%;
 }
 
 .your-class {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 200px;
 	/*width: 30%;*/
 	margin-right: 5%;
 }
 
 .ongoing-projects {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 600px;
 	width: 85%;
 	margin-left: 5%;
 }
 
 .other-projects {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 300px;
 	width: 85%;
 	margin-left: 5%;
 }
 
 .schedule {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 200px;
 	margin-right: 5%;
 }
 
 .long-schedule {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 475px;
 	margin-right: 5%;
 }
 
 .add-post {
-	border: solid;
+	border: solid lightslategray;
+	background-color: whitesmoke;
 	height: 200px;
 	width: 85%;
 	margin-left: 5%;
@@ -157,7 +182,8 @@ body {
 
 .to-do {
 	overflow: hidden;
-	border:solid;
+	border:solid lightslategray;
+	background-color: whitesmoke;
 	height: 400px;
 	width: 85%;
 	margin-left: 5%;

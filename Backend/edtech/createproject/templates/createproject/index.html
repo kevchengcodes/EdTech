@@ -7,7 +7,7 @@
   <head>
     <meta charset="ut 8">
     {% load static %}
-    <link rel='stylesheet' type="text/css" href="{% static 'scrapenews/style.css' %}">
+    <link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
     <title>Create a Project</title>
   </head>
   
@@ -37,7 +37,10 @@
         <!-- <h1>Register</h1> -->
         <p>Please fill in this form to create a project.</p>
         <hr>
-        
+        <input type="hidden" name="ClassNum" value="0">
+        <label for="Partner"><b>Partner Name</b></label>
+        <input type="text" placeholder="Enter Your Organization's Name" name="Partner" id="Partner" required>
+
         <label for="Title"><b>Project Name</b></label>
         <input type="text" placeholder="Enter Project Name" name="Title" id="Title" required>
         
@@ -128,7 +131,7 @@
         <input type="date" id="End_date" name="End_date" value="2100-01-01"> <br><br>
       </div>
 
-      <input type="submit" value="Create">
+      <button type="submit" class="registerbtn">Create Project</button>
       
     </form>
     
