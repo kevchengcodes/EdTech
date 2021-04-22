@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Jquery scripts -->
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<head>
+    <meta charset="ut 8">
+    {% load static %}
+    <link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
+    <title>Project Detail Page</title>
+</head>
+
+<body>
+    
+    <div class = "wrapper">
+        <div class = "nav-bar" id = "partner-nav-bar">
+            <h1 class="header"> WeMinari </h1>
+            <ul>
+                <p></p>
+                <li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
+                <li><a href="{% url 'createproject:index' %}">Create New Project</a></li>
+                <li><a href="{% url 'createproject:home' %}">Home</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class ="title">
+        <h1> Detail Page: {{proj.Partner}}: {{proj.Title}} </h1>
+    </div>
+    
+    <div class = "projinfo">
+        <p style="font-style: italic">{{ proj.Short }} </p>
+        <p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
+        <p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
+        {% if proj.Virtual == "Virtual" %}
+        <p> Virtual is supported. </p>
+        {% endif %}
+        
+        <p>{{ proj.Long }}</p>
+        <li>Subject(s): {{proj.Subjects}}</li>
+        <li>Desired Level: {{ proj.Level }}</li>
+        <li>Desired Class Size: {{ proj.Class_size }}</li>
+        <li>Desired Group Size: {{ proj.Group_size }}</li>
+    </div>
+    
+    
+    <div class="spacer"><hr></div>
+    
+    <h2 class="header"> Discussion Board </h2>
+    
+    <div class="ongoing-projects">
+        {% if latest_posts %}
+          <ul>
+            {% for post in latest_posts %}
+            <div class="grid-container">
+              <div class = "grid-child">
+
+                {% if post.Role == "Partner" %}
+                <div class="InstructorPost">
+                  <h3> PARTNER POST : {{post.Author}} </h3>
+                  <p> {{post.PostDate}} </p>
+                  <p> {{post.Body}} </p>
+                </div>
+                
+                {% else %}
+                <div>
+                  <h3> {{post.Author}} </h3>
+                  <p> {{post.PostDate}} </p>
+                  <p> {{post.Body}} </p>
+                </div>
+                
+                {% endif %}
+              </div>
+              <div class="grid-child">
+                {% if post.Role == "Partner" %}
+                  <img src= "{% static 'img/teacher.png' %}" height="50px">
+                {% else %}
+                <img src= "{% static 'img/student.jpg' %}" height="50px">
+                {% endif %}
+              </div>
+            </div>
+            <div class="spacer"><hr></div>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p>You and the class haven't been very active. Get the conversation started!</p>
+          {% endif %}
+    </div>
+    <div class = "add-post">
+        <form action="{% url 'addpost:createprojpost' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="Author" value="KevinCo">
+          <input type="hidden" name="Role" value="Partner">
+          <input type="hidden" name="ProjKey" value={{proj.id}}>
+          <textarea rows = "5" name="Body" placeholder="Share something with the class!" maxlength="1000" required></textarea>
+          
+          <button type="submit" class="registerbtn">Add Post</button>
+          
+        </form>
+      </div>
+    
+    <div class="spacer"></div>
+    
+    
+</body>
+
+
+
+</html>

@@ -62,9 +62,14 @@ body {
 	margin-left: 5%;
 	color: black;
 }
+
 .header {
 	margin-left: 5%;
 	color: rgba(0, 156, 158, 1);
+}
+
+.description {
+	margin-left: 5%;
 }
 
 .grid-container {
@@ -153,9 +158,10 @@ hr{
 .ongoing-projects {
 	border: solid lightslategray;
 	background-color: whitesmoke;
-	height: 600px;
+	max-height: 600px;
 	width: 85%;
 	margin-left: 5%;
+	overflow: auto;
 }
 
 .other-projects {
@@ -368,4 +374,9 @@ a {
 table th, tr {
     text-align: center;
 	padding: 10px;
+}
+
+.projinfo {
+	margin-left: 5%;
+	margin-right: 5%;
 }

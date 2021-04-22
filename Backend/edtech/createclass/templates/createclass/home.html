@@ -28,7 +28,7 @@
 	
 	<!-- Header -->
 	<div class ="title">
-		<h1> Your Classroom. </h1>
+		<h1> Hi, Mr. Cheng. This is Your Classroom. </h1>
 	</div>
 	
 	<!-- Grid -->
@@ -107,7 +107,7 @@
 		{% if proj.Virtual == "Virtual" %}
 		<p> Virtual is supported. </p>
 		{% endif %}
-		<p>{{ proj.Long }}</p>
+		<p>{{ proj.Short }}</p>
 
 		<form action="{% url 'createclass:removeproj' proj.id %}" method="POST">
 			{% csrf_token %}

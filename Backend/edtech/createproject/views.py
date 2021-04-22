@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Projects, SubjectList, StudentLevel, ProjectForm
+from addpost.models import ProjPostList
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
@@ -44,9 +45,6 @@ def addprojtoclass(request, proj_id):
 
     return HttpResponseRedirect(reverse('createclass:home'))
 
-
-
-
 def create_new_project(request):
     context = {}
     form = ProjectForm(request.POST or None)
@@ -57,4 +55,18 @@ def create_new_project(request):
         form.save()
 
     context['form'] = form
-    return HttpResponseRedirect(reverse('createproject:results'))
+    return HttpResponseRedirect(reverse('createproject:home'))
+
+def home(request):
+    project_list = Projects.objects.order_by('-Start_date').filter(Partner='KevinCo')
+    context = {'project_list': project_list}
+    return render(request, 'createproject/partner_home.html', context)
+
+def proj_detail(request, proj_id):
+    proj = get_object_or_404(Projects, pk=proj_id)
+    latest_posts = ProjPostList.objects.filter(ProjKey=proj_id).order_by('-PostDate')[0:30]
+    context = {}
+    context['proj'] = proj
+    context['latest_posts'] = latest_posts
+
+    return render(request, 'createproject/proj_detail.html', context)
