@@ -3,12 +3,13 @@ html {
 	scroll-behavior: smooth;
 	height: 100%;
 	width: 100%;
+	overflow: auto;
 }
 
 body {
 	left: 0;
 	margin: 0;
-	overflow: scroll;
+	overflow: auto;
 	height: 100%;
 	width: 100%;
 	position: relative;
@@ -23,6 +24,13 @@ body {
 	top: 0;
 	opacity: .95;
 }
+#teach-nav-bar {
+	background-color: blue;
+}
+#partner-nav-bar {
+	background-color: seagreen;
+}
+
 .wrapper {
 	height: 55px;
 }
@@ -74,7 +82,7 @@ body {
 .grid-child div:hover {
 	overflow: auto;
 }
-.grid-child img, input {
+.grid-child img, input[type=submit] {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
@@ -100,7 +108,7 @@ hr{
 .priority {
 	border: solid lightslategray;
 	background-color: whitesmoke;
-	height: 200px;
+	height: 250px;
 	width: 85%;
 	margin-left: 5%;
 }
@@ -116,20 +124,20 @@ hr{
 .forum {
 	border: solid lightslategray;
 	background-color: whitesmoke;
-	height: 600px;
+	height: 800px;
 	width: 95%;
 	margin-left: 5%;
 }
 
 .filters {
-	height: 600px;
+	height: 800px;
 	margin-right: 5%;
 }
 
 .partner-list {
 	border: solid lightslategray;
 	background-color: whitesmoke;
-	height: 200px;
+	height: 250px;
 	/*width: 30%;*/
 	margin-right: 5%;
 }
@@ -201,6 +209,8 @@ hr{
 .instructor-partner {
 	margin-left: 5%;
 	width: 85%;
+	max-height:600px;
+	overflow: auto;
 }
 
 #outerdiv {
@@ -291,10 +301,71 @@ a {
 
 
 .InstructorPost h3 {
-	color: rgba(0, 156, 158, 1);
+	color: blue;
 }
 
 .InstructorPost p {
 	  font-weight: bold;
 }
 
+/*Background of main section*/
+.jumbotron {
+	background-image: url('../img/wind_energy.jpg'); 
+	height: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/*Top header section*/
+.jumboheader {
+	margin-top: 0;
+	text-align: center;
+	color: white;
+}
+
+#welcome {
+	font-size: 55px;
+	display: inline;
+	margin: 0px,0px,0px,0px;
+}
+
+.butt {
+	height:150px;
+	width:150px;
+	margin-left: 0px;
+	margin-right: 0px;
+	cursor:pointer;
+	color:white;
+	opacity: .6;
+	font-size: 20px;
+}
+
+
+#studbutt {
+	border: 1px outset rgba(0, 156, 158, 1);
+	background-color: rgba(0, 156, 158, 1);
+}
+#teachbutt {
+	border: 1px outset blue;
+	background-color: blue;
+}
+#partnerbutt {
+	border: 1px outset seagreen;
+	background-color: seagreen;
+}
+
+.buttlink {
+	color:white;
+	text-decoration: none;
+}
+
+.buttlink:hover {
+	color:lightblue;
+}
+
+table th, tr {
+    text-align: center;
+	padding: 10px;
+}

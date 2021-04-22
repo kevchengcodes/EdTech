@@ -14,41 +14,48 @@
 <body>
 	
 	<div class = "wrapper">
-		<div class = "nav-bar">
-			<h1 class="header"> EdTech </h1>
+		<div class = "nav-bar" id = "teach-nav-bar">
+			<h1 class="header"> WeMinari </h1>
 			<ul>
 				<p></p>
-				<li><a href="#connect">Messages</a></li>
-				<li><a href="#blog">Settings</a></li>
-				<li><a href="#projects">Profile</a></li>
-				<li><a href="#about-me">Home</a></li>
+				<li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
+				<li><a href="{% url 'createclass:index' %}">Create Class</a></li>
+				<li><a href="{% url 'createproject:results' %}">Project Forum</a></li>
+				<li><a href="{% url 'createclass:home' %}">Home</a></li>
 			</ul>
 		</div>
 	</div>
 	
 	<!-- Header -->
 	<div class ="title">
-		<h1> Your Class, Your Rules. </h1>
+		<h1> Your Classroom. </h1>
 	</div>
 	
 	<!-- Grid -->
-	<div class="grid-container">
+	<div class="instructor-partner">
 		
 		<!-- Student Snapshot -->
-		<div class="grid-child">
-			<h2 class="header"> Student Snapshot </h2>
-			<div class="main-feed">
-				<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
-			</div>
-		</div>
-		
-		<!-- Partner List -->
-		<div class="grid-child">
-			<h2 class="header"> Placeholder </h2>
-			<div class="partner-list">
-				<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
-			</div>
-		</div>
+		<h2 class="header"> Student Snapshot </h2>
+		<hr>
+		<table style="width:100%">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Cognitive Model</th>
+				<th>Saved Article Count</th>
+				<th>Favorite Topics</th>
+				<th>Number of Posts</th>
+			</tr>
+			<tr>
+				<td>Kevin</td>
+				<td>Cheng</td>
+				<td>Field Independent</td>
+				<td>42</td>
+				<td>solar wind energy</td>
+				<td>101</td>
+			</tr>
+		</table>
+
 	</div>
 	
 	<div class="spacer"></div>
@@ -79,6 +86,7 @@
 				{% csrf_token %}
 				<input type="submit" value="Delete Post">
 			</form>
+			<hr>
 			
 			{% endfor %}
 		</ul>
@@ -89,7 +97,7 @@
 	
 	<div class="spacer"></div>
 	
-	<h2 class="header"> Partner List </h2>
+	<h2 class="header"> Project List </h2>
 	
 	<div class="instructor-partner">
 		{% for proj in project_list %}
@@ -99,16 +107,13 @@
 		{% if proj.Virtual == "Virtual" %}
 		<p> Virtual is supported. </p>
 		{% endif %}
-		<p>{{ proj.Short }}</p>
-		<li>Subject(s): {{proj.Subjects}}</li>
-		<li>Desired Level: {{ proj.Level }}</li>
-		<li>Desired Class Size: {{ proj.Class_size }}</li>
-		<li>Desired Group Size: {{ proj.Group_size }}</li>
+		<p>{{ proj.Long }}</p>
 
 		<form action="{% url 'createclass:removeproj' proj.id %}" method="POST">
 			{% csrf_token %}
 			<input type="submit" value="Remove Project">
 		</form>
+		<hr>
 		{% endfor %}
 	</div>
 	

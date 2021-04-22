@@ -14,16 +14,16 @@
 <body>
     
     <div class = "wrapper">
-        <div class = "nav-bar">
-            <h1 class="header"> EdTech </h1>
-            <ul>
-                <p></p>
-                <li><a href="#connect">Messages</a></li>
-                <li><a href="#blog">Settings</a></li>
-                <li><a href="#projects">Profile</a></li>
-                <li><a href="#about-me">Home</a></li>
-            </ul>
-        </div>
+		<div class = "nav-bar" id = "teach-nav-bar">
+			<h1 class="header"> WeMinari </h1>
+			<ul>
+				<p></p>
+                <li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
+				<li><a href="{% url 'createclass:index' %}">Create Class</a></li>
+				<li><a href="{% url 'createproject:results' %}">Project Forum</a></li>
+				<li><a href="{% url 'createclass:home' %}">Home</a></li>
+			</ul>
+		</div>
     </div>
     
     <!-- Header -->
@@ -39,7 +39,7 @@
             <h2 class="header"> Available Opportunities </h2>
             <div class="forum">
                 {% for proj in project_list %}
-                <h3>{{ proj.Title }}</h3>
+                <h3>{{ proj.Partner}}: {{ proj.Title }}</h3>
                 <p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
                 <p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
                 {% if proj.Virtual == "Virtual" %}
@@ -55,6 +55,7 @@
                     <!-- <input type="hidden" name="Title" value="{{proj.id}}"> -->
                     <input type="submit" value="Add This Project">
                   </form>
+                <hr>
                 {% endfor %}
             </div>
         </div>
@@ -64,6 +65,9 @@
             <h2 class="header"> Filters </h2>
             <div class="filters">
                 <form action="" method="GET">
+                    <label for="partner_name"><b>Partner Name</b></label>
+                    <input type="text" placeholder="Filter by Partner" name="Partner" id="Partner">
+
                     <label for="Subjects"><b>Subjects </b></label>
                     <p>(Select all that apply)</p>
                     <div class="checklist">

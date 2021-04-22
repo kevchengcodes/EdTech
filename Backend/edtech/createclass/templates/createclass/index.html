@@ -15,16 +15,16 @@
   <body>
 
   	<div class = "wrapper">
-  		<div class = "nav-bar">
-  			<h1 class="header"> EdTech </h1>
-  			<ul>
-  				<p></p>
-          <li><a href="#connect">Messages</a></li>
-          <li><a href="#blog">Settings</a></li>
-          <li><a href="#projects">Profile</a></li>
-          <li><a href="#about-me">Home</a></li>
-  			</ul>
-  		</div>
+      <div class = "nav-bar" id = "teach-nav-bar">
+        <h1 class="header"> WeMinari </h1>
+        <ul>
+          <p></p>
+          <li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
+          <li><a href="{% url 'createclass:index' %}">Create Class</a></li>
+          <li><a href="{% url 'createproject:results' %}">Project Forum</a></li>
+          <li><a href="{% url 'createclass:home' %}">Home</a></li>
+        </ul>
+      </div>
   	</div>
 
   	<!-- Header -->

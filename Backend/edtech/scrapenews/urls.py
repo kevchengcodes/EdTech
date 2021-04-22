@@ -9,4 +9,5 @@ urlpatterns = [
     path('log_link/', views.log_link, name='log_link'),
     path('cognitivehome/', views.cognitivehome, name='cognitivehome'),
     path('cognitive_questionnaire/', views.cognitive_questionnaire, name='cognitive_questionnaire'),
+    path('demo_home',views.demo_home, name='demo_home'),
 ]

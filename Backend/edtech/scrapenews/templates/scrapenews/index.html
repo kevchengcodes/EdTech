@@ -17,13 +17,13 @@
     
     <div class = "wrapper">
       <div class = "nav-bar">
-        <h1 class="header"> EdTech </h1>
+        <h1 class="header"> WeMinari </h1>
         <ul>
           <p></p>
-          <li><a href="#connect">Messages</a></li>
-          <li><a href="#blog">Settings</a></li>
-          <li><a href="#projects">Profile</a></li>
-          <li><a href="#about-me">Home</a></li>
+          <li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
+          <li><a href="{% url 'scrapenews:cognitive_questionnaire' %}">Cognitive Quiz</a></li>
+          <li><a href="{% url 'scrapenews:index2' %}">Home (Cozy)</a></li>
+          <li><a href="{% url 'scrapenews:index' %}">Home (Full)</a></li>
         </ul>
       </div>
     </div>
@@ -45,7 +45,7 @@
             {% for post in latest_posts %}
             <div class="grid-container">
               <div class = "grid-child">
-
+                
                 {% if post.Role == "Instructor" %}
                 <div class="InstructorPost">
                   <h3> FROM THE TEACHER'S DESK : {{post.Author}} </h3>
@@ -64,7 +64,7 @@
               </div>
               <div class="grid-child">
                 {% if post.Role == "Instructor" %}
-                  <img src= "{% static 'img/teacher.png' %}" height="50px">
+                <img src= "{% static 'img/teacher.png' %}" height="50px">
                 {% else %}
                 <img src= "{% static 'img/student.jpg' %}" height="50px">
                 {% endif %}
@@ -81,15 +81,25 @@
       
       <!-- Partner List -->
       <div class="grid-child">
-        <h2 class="header"> Partner List </h2>
+        <h2 class="header"> Project List </h2>
         <div class="partner-list">
-          <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+          
+          {% if project_list %}
+          <!-- <ul> -->
+            {% for proj in project_list %}
+            <p><strong>{{proj.Partner}}: </strong>{{proj.Title}}</p>
+            {% endfor %}
+          <!-- </ul> -->
+          {% else %}
+          <p>Stay tuned for more projects.</p>
+          {% endif %}
+          
         </div>
       </div>
       
       <div class="spacer"></div>
       <div class="spacer"></div>
-
+      
       <!-- Main Feed -->
       <div class="grid-child">
         <h2 class="header"> Main Feed </h2>
@@ -138,19 +148,20 @@
         <h2 class="header"> Your Class </h2>
         
         <div class="your-class">
+          <p><strong>Mr. Cheng</strong></p>
           <p>Kevin</p>
         </div>
         <h2 class="header"> Upcoming </h2>
         <div class = "schedule">
-          <p>do this</p>
+          <p>No upcoming events.</p>
         </div>
       </div>
       
       
     </div>
-
+    
     <div class="spacer"><br></div>
-
+    
     <!-- Add a post -->
     <div class = "grid-child"></div>
     <h2 class="header"> Add a Post </h2>
@@ -167,11 +178,11 @@
       </form>
     </div>
     <div class="spacer"><br></div>
+    
+    
+    
+  </body>
   
   
   
-</body>
-
-
-
-</html>
+  </html>

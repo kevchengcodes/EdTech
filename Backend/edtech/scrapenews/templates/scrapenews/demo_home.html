@@ -1,0 +1,38 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <!-- Jquery scripts -->
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  
+  
+  <head>
+    <meta charset="ut 8">
+    {% load static %}
+    <link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
+    <title>Student Landing Page</title>
+  </head>
+  
+  <body>
+    
+    
+    <div class = "jumbotron">
+      <div class = "jumboheader">
+        <br><br><br><br><br>
+        <h1 id="welcome">Welcome to WeMinari.</h1>
+        <div class="spacer"></div>
+        <h2 style="color:black">Choose your role and take a tour:</h2>
+        <button class="butt" id="studbutt"><a class="buttlink" href="{% url 'scrapenews:cognitive_questionnaire' %}">Student</a></button>
+        <button class="butt" id="teachbutt"><a class="buttlink" href="{% url 'createclass:index' %}">Instructor</a></button>
+        <button class="butt" id="partnerbutt"><a class="buttlink" href="{% url 'createproject:index' %}">Partner</a></button>
+      </div>
+    </div>
+      
+      
+      
+      
+      
+    </body>
+    
+    
+    
+    </html>

@@ -21,6 +21,5 @@ urlpatterns = [
     path('createproject/', include('createproject.urls')),
     path('createclass/', include('createclass.urls')),
     path('scrapenews/', include('scrapenews.urls')),
-    path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]

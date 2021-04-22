@@ -14,13 +14,13 @@
   <body>
     
     <div class = "wrapper">
-      <div class = "nav-bar">
-        <h1 class="header"> EdTech </h1>
+      <div class = "nav-bar" id="partner-nav-bar">
+        <h1 class="header"> WeMinari </h1>
         <ul>
           <p></p>
-          <li><a href="#connect">Messages</a></li>
-          <li><a href="#blog">Settings</a></li>
-          <li><a href="#projects">Profile</a></li>
+          <li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
+          <li><a href="{% url 'createproject:index' %}">Create New Project</a></li>
+          <li><a href="{% url 'createproject:index' %}">Ongoing Projects</a></li>
           <li><a href="#about-me">Home</a></li>
         </ul>
       </div>

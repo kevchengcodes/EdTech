@@ -29,6 +29,7 @@ def results(request):
     else:
         project_list = Projects.objects.order_by('Start_date')\
                         .filter(Subjects__contains=keychecker(filters,'Subjects'),\
+                        Partner__contains=keychecker(filters,'Partner'),\
                         Level__contains=keychecker(filters,'Level'),\
                         Start_date__range= [keychecker(filters,'Start_date_0'),keychecker(filters,'Start_date_1')],\
                         )
