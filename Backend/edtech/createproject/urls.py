@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:proj_id>/addprojtoclass/', views.addprojtoclass, name='addprojtoclass'),
     path('home/', views.home, name='home'),
     path('<int:proj_id>/proj_detail/', views.proj_detail, name='proj_detail'),
+    path('<int:proj_id>/student_proj_detail/', views.student_proj_detail, name='student_proj_detail'),
 ]

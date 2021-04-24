@@ -88,6 +88,10 @@
           <!-- <ul> -->
             {% for proj in project_list %}
             <p><strong>{{proj.Partner}}: </strong>{{proj.Title}}</p>
+            <form action="{% url 'createproject:student_proj_detail' proj.id %}" method="GET">
+              <button type="submit" class="selector">Go to Page</button>
+            </form>
+            <hr style="margin-left:5%">
             {% endfor %}
           <!-- </ul> -->
           {% else %}
@@ -129,7 +133,7 @@
                   <input type="hidden" name="Link" value="{{article.Link}}">
                   <input type="hidden" name="Date" value="{{article.Date}}">
                   <input type="hidden" name="Site" value="{{article.Site}}">
-                  <input type="submit" value="Add to Reading List">
+                  <input type="submit" class="selector" value="Save This Article">
                 </form>
                 
               </div>

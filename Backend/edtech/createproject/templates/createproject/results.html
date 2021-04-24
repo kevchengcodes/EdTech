@@ -42,7 +42,7 @@
                 <h3>{{ proj.Partner}}: {{ proj.Title }}</h3>
                 <p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
                 <p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
-                {% if proj.Virtual == "Virtual" %}
+                {% if proj.Virtual == "Yes" %}
                 <p> Virtual is supported. </p>
                 {% endif %}
                 <p>{{ proj.Short }}</p>
@@ -53,7 +53,7 @@
                 <form action="{% url 'createproject:addprojtoclass' proj.id %}" method="POST">
                     {% csrf_token %}
                     <!-- <input type="hidden" name="Title" value="{{proj.id}}"> -->
-                    <input type="submit" value="Add This Project">
+                    <input type="submit" class="selector" value="Add This Project">
                   </form>
                 <hr>
                 {% endfor %}
@@ -106,23 +106,17 @@
                     <label for="Start_date">As Early As: </label>
                     <input type="date" id="Start_date_0" name="Start_date_0" value="2021-01-01"> <br><br>
                     <label for="Start_date">As Late As: </label>
-                    <input type="date" id="Start_date_1" name="Start_date_1" value="2100-01-01"> <br><br>
+                    <input type="date" id="Start_date_1" name="Start_date_1" value="2022-01-01"> <br><br>
                     
-                    <input type="submit" value="Filter">
+                    <input type="submit" class="registerbtn" value="Filter">
                 </form>
             </div>
         </div>
     </div>
     
-    <div class="spacer"></div>
+    <div class="spacer"><br></div>
     
-    <h2 class="header"> Ongoing Projects </h2>
-    
-    <div class="ongoing-projects">
-        <div id="outerdiv"></div>
-    </div>
-    
-    <div class="spacer"></div>
+    <div class="spacer"><br></div>
     
     
 </body>

@@ -30,7 +30,7 @@ def results(request):
     else:
         project_list = Projects.objects.order_by('Start_date')\
                         .filter(Subjects__contains=keychecker(filters,'Subjects'),\
-                        Partner__contains=keychecker(filters,'Partner'),\
+                        Partner__icontains=keychecker(filters,'Partner'),\
                         Level__contains=keychecker(filters,'Level'),\
                         Start_date__range= [keychecker(filters,'Start_date_0'),keychecker(filters,'Start_date_1')],\
                         )
@@ -70,3 +70,12 @@ def proj_detail(request, proj_id):
     context['latest_posts'] = latest_posts
 
     return render(request, 'createproject/proj_detail.html', context)
+
+def student_proj_detail(request, proj_id):
+    proj = get_object_or_404(Projects, pk=proj_id)
+    latest_posts = ProjPostList.objects.filter(ProjKey=proj_id).order_by('-PostDate')[0:30]
+    context = {}
+    context['proj'] = proj
+    context['latest_posts'] = latest_posts
+
+    return render(request, 'createproject/student_proj_detail.html', context)

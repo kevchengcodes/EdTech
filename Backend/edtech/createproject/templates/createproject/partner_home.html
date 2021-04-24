@@ -41,10 +41,10 @@
                 <h3>{{ proj.Partner}}: {{ proj.Title }}</h3>
                 <p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
                 <p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
-                {% if proj.Virtual == "Virtual" %}
+                {% if proj.Virtual == "Yes" %}
                 <p> Virtual is supported. </p>
                 {% endif %}
-                <p>{{ proj.Long }}</p>
+                <p>{{ proj.Short }}</p>
                 <li>Subject(s): {{proj.Subjects}}</li>
                 <li>Desired Level: {{ proj.Level }}</li>
                 <li>Desired Class Size: {{ proj.Class_size }}</li>
@@ -73,7 +73,7 @@
                 <h3>{{ proj.Partner}}: {{ proj.Title }}</h3>
                 <p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
                 <p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
-                {% if proj.Virtual == "Virtual" %}
+                {% if proj.Virtual == "Yes" %}
                 <p> Virtual is supported. </p>
                 {% endif %}
                 <p>{{ proj.Long }}</p>

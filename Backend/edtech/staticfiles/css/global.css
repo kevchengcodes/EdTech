@@ -3,7 +3,7 @@ html {
 	scroll-behavior: smooth;
 	height: 100%;
 	width: 100%;
-	overflow: auto;
+	/* overflow: auto; */
 }
 
 body {
@@ -379,4 +379,48 @@ table th, tr {
 .projinfo {
 	margin-left: 5%;
 	margin-right: 5%;
+}
+
+.selector {
+	text-align: center;
+	background-color: rgba(0, 156, 158, 1);
+	border-color: rgba(0, 156, 158, 1);
+	opacity: .9;
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.arrow {
+	border: solid white;
+	border-width: 0 5px 5px 0;
+	display: inline-block;
+	padding: 8px;
+}
+
+.down {
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
+.demoheader {
+	margin-top: 0;
+	text-align: center;
+}
+
+.section-header {
+	color:rgba(0, 156, 158, 1);
+	padding-top: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	font-family:Raleway;
+}
+
+.about {
+	text-align:center;
+	margin-left: 20%;
+	margin-right: 20%;
 }

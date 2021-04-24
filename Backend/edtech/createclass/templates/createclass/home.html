@@ -84,7 +84,7 @@
 			{% endif %}
 			<form action="{% url 'createclass:deletepost' post.id %}" method="POST">
 				{% csrf_token %}
-				<input type="submit" value="Delete Post">
+				<input type="submit" class="selector" style="background-color: red; border-color: red;" value="Delete Post">
 			</form>
 			<hr>
 			
@@ -104,14 +104,14 @@
 		<h3>{{proj.Partner}}: {{ proj.Title }}</h3>
 		<p><strong>{{proj.Start_date}} to {{proj.End_date}}</strong></p>
 		<p style="font-style:italic"><strong>Locations:</strong> {{ proj.Locations}}</p>
-		{% if proj.Virtual == "Virtual" %}
+		{% if proj.Virtual == "Yes" %}
 		<p> Virtual is supported. </p>
 		{% endif %}
 		<p>{{ proj.Short }}</p>
 
 		<form action="{% url 'createclass:removeproj' proj.id %}" method="POST">
 			{% csrf_token %}
-			<input type="submit" value="Remove Project">
+			<input type="submit" class="selector" value="Remove Project">
 		</form>
 		<hr>
 		{% endfor %}

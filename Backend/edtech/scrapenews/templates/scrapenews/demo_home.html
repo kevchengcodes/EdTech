@@ -9,7 +9,7 @@
     <meta charset="ut 8">
     {% load static %}
     <link rel='stylesheet' type="text/css" href="{% static 'css/global.css' %}">
-    <title>Student Landing Page</title>
+    <title>WeMinari</title>
   </head>
   
   <body>
@@ -17,6 +17,7 @@
     
     <div class = "jumbotron">
       <div class = "jumboheader">
+        <a name="jumbo"></a>
         <br><br><br><br><br>
         <h1 id="welcome">Welcome to WeMinari.</h1>
         <div class="spacer"></div>
@@ -24,15 +25,75 @@
         <button class="butt" id="studbutt"><a class="buttlink" href="{% url 'scrapenews:cognitive_questionnaire' %}">Student</a></button>
         <button class="butt" id="teachbutt"><a class="buttlink" href="{% url 'createclass:index' %}">Instructor</a></button>
         <button class="butt" id="partnerbutt"><a class="buttlink" href="{% url 'createproject:index' %}">Partner</a></button>
+        <div class="spacer">
+          <!-- <h3><a href="#about" style="color:green;text-decoration: none;margin-bottom: none;">About</a></h3> -->
+          <i class="arrow down"><a href="#about" style="opacity: 0;">bb</a></i>
+        </div>
       </div>
     </div>
-      
-      
-      
-      
-      
-    </body>
+    
+    <a name="about"></a>
+    <div class = "about">
+      <h1 class="section-header">ABOUT WEMINARI</h1>
+      <h3 style="font-style: italic;">Learning better, together.</h3>
+      <p>Humans are social creatures. We learn best when we can work together and connect abstract concepts
+        to real-life applications. WeMinari aims to provide a platform for students and instructors to
+        collaborate together and apply their learnings in the real world. WeMinari's mission is to
+        create a digital environment to foster an
+        <strong>active, adaptive, social, and contextualized</strong> learning experience that connects classroom
+        content with real-world context.
+      </p>
+      <h3 class="section-header" style="color:rgba(0, 156, 158, 1)">STUDENTS</h3>
+      <p>
+        WeMinari is designed to optimize the student's learning enjoyment and performance. 
+        Their main feed is populated with news articles related to their coursework. As they use the app 
+        more and save articles that they enjoyed, their main feed will <strong>adapt</strong> to their 
+        behavior to meet their individualized interests.
+      </p>
+      <p>
+        The UX is also designed to fit their learning style and cognitive learning model. A cognitive
+        model questionnaire will direct them either to a cozy, minimalist view of their main landing page 
+        for those who prefer less clutter, or to a full, info-packed view for those who prefer having
+        everything in one, convenient location.
+      </p>
+        Students will also have exposure to opportunities outside of their classroom with external partners,
+        like companies or community groups in their field of interest. This might come in the form of projects
+        that students can work on, tours, or networking/recruiting events. In this way, students can engage
+        with these partners to supplement their learning with <strong>active</strong> and 
+        <strong>contextualized</strong> hands-on activities.
+      <p>
+      <p>
+        While working on these projects or perusing their main feeds, students will want to share things, ask
+        questions, or discuss ideas with their classmates, instructor, and external partners. WeMinari acts as a 
+        social media app and learning management system combination to enable students to collaborate effectively
+        in a responsible, engaging, and <strong>social</strong> manner.
+      </p>
+        
+      </p>
+      <h3 class="section-header" style="color:blue">INSTRUCTORS</h3>
+      <p>
+        Instructors are the head of the class. WeMinari empowers instructors to guide their classroom 
+        without being too obtrusive. They can view key statistics on each student's performance and engagement
+        in the app, look through available projects and other opportunities that they'd like to include
+        as part of their curriculum, make announcements to their class, and moderate any online discussion
+        that occurs in the app.
+      </p>
+      <h3 class="section-header" style="color:seagreen">PARTNERS</h3>
+      <p>
+        Last but not least, external partners can engage with a classroom as long as an instructor 
+        initiates a connection. They'll have the ability to create projects, manage their projects, 
+        and work with students on each individual project/opportunity that gets matched.
+      </p>
+      <h3 class="section-header"><a href="#jumbo" style="color:rgba(0, 156, 158, 1)">Let's get started!</a></h3>
+    </div>
     
     
     
-    </html>
+    
+    
+    
+  </body>
+  
+  
+  
+  </html>

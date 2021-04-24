@@ -14,13 +14,14 @@
 <body>
     
     <div class = "wrapper">
-        <div class = "nav-bar" id = "partner-nav-bar">
+        <div class = "nav-bar" id = "student-nav-bar">
             <h1 class="header"> WeMinari </h1>
             <ul>
-                <p></p>
-                <li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
-                <li><a href="{% url 'createproject:index' %}">Create New Project</a></li>
-                <li><a href="{% url 'createproject:home' %}">Home</a></li>
+              <p></p>
+              <li><a href="{% url 'scrapenews:demo_home' %}">Demo Page</a></li>
+              <li><a href="{% url 'scrapenews:cognitive_questionnaire' %}">Cognitive Quiz</a></li>
+              <li><a href="{% url 'scrapenews:index2' %}">Home (Cozy)</a></li>
+              <li><a href="{% url 'scrapenews:index' %}">Home (Full)</a></li>
             </ul>
         </div>
     </div>
@@ -91,8 +92,8 @@
     <div class = "add-post">
         <form action="{% url 'addpost:createprojpost' %}" method="POST">
           {% csrf_token %}
-          <input type="hidden" name="Author" value="KevinCo">
-          <input type="hidden" name="Role" value="Partner">
+          <input type="hidden" name="Author" value="Kevin">
+          <input type="hidden" name="Role" value="Student">
           <input type="hidden" name="ProjKey" value={{proj.id}}>
           <textarea rows = "5" name="Body" placeholder="Share something with the class!" maxlength="1000" required></textarea>
           
